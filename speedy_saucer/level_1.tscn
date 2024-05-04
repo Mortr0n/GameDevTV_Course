@@ -18,5 +18,4 @@ stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_krfjn")]
 position = Vector2(475, 160)
-gravity_scale = 0.0
 script = ExtResource("4_nlbev")
