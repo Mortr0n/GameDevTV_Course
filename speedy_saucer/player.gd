@@ -12,3 +12,5 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
 		apply_force(Vector2(-force, 0))
 	#apply_force(Vector2(25,0))
+	
+
