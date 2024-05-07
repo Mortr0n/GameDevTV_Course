@@ -7,7 +7,7 @@
 radius = 20.3961
 
 [node name="Player" type="RigidBody2D"]
-position = Vector2(499, 197)
+position = Vector2(577, 324)
 gravity_scale = 0.0
 script = ExtResource("1_ypgg1")
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhd1nqtwta0hd"]
+[gd_scene load_steps=11 format=3 uid="uid://bhd1nqtwta0hd"]
 
 [ext_resource type="Texture2D" uid="uid://qvhijvrbvnjj" path="res://purple.png" id="1_2k42v"]
 [ext_resource type="Script" path="res://level.gd" id="1_v3ryd"]
 [ext_resource type="PackedScene" uid="uid://1stampevkuad" path="res://player.tscn" id="2_krfjn"]
 [ext_resource type="Script" path="res://RaceTimer.gd" id="3_p22n2"]
+[ext_resource type="Script" path="res://LastTime.gd" id="4_voc0x"]
 [ext_resource type="PackedScene" uid="uid://6hgaeyynr0un" path="res://maze.tscn" id="5_x6o6b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nqqxw"]
@@ -55,6 +56,16 @@ text = "00.00
 "
 label_settings = SubResource("LabelSettings_2k746")
 script = ExtResource("3_p22n2")
+
+[node name="LastTimeLabel" type="Label" parent="Graphics/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LastTime" type="Label" parent="Graphics/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("4_voc0x")
+last_time = null
 
 [node name="Player" parent="." instance=ExtResource("2_krfjn")]
 position = Vector2(575, 321)
