@@ -21,15 +21,17 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(horizontal_direction * max_speed, vertical_direction * max_speed)
 	move_and_slide()
 	
-	var screen_size = get_viewport_rect().size
-	
-	if global_position.x < min_x:
-		global_position.x = min_x
-	if global_position.y < min_y:
-		global_position.y = min_y
-	if global_position.x > screen_size.x - ship_x_buffer:
-		global_position.x = screen_size.x - ship_x_buffer
-	if global_position.y > screen_size.y:
-		global_position.y = screen_size.y
+	var viewport_rect = get_viewport_rect()
+	# clamping global position to min(screen position which is top left) and max (the size of the viewable screen)
+	global_position = global_position.clamp(viewport_rect.position, viewport_rect.size)
+	# the global_position.clamp is basically doing the below if statements
+	#if global_position.x < min_x:
+		#global_position.x = min_x
+	#if global_position.y < min_y:
+		#global_position.y = min_y
+	#if global_position.x > screen_size.x - ship_x_buffer:
+		#global_position.x = screen_size.x - ship_x_buffer
+	#if global_position.y > screen_size.y:
+		#global_position.y = screen_size.y
 		
 	print(global_position)
