@@ -5,9 +5,7 @@ var min_x = 0
 var min_y = 0
 var ship_x_buffer = 50
 
-
-func _ready() -> void:
-	rscene = load("res://scenes/rocket.tscn")
+var rscene = preload("res://scenes/rocket.tscn")
 
 
 func _process(delta: float) -> void:
