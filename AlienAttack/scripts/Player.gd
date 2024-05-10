@@ -6,6 +6,9 @@ var min_y = 0
 var ship_x_buffer = 50
 
 
+func _ready() -> void:
+	rscene = load("res://scenes/rocket.tscn")
+
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Shoot"):
@@ -35,7 +38,8 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	print("Shoot!")
-	var rocket_scene = preload("res://scenes/rocket.tscn") 
-	var rocket_instance = rocket_scene.instantiate()
+	#var rocket_scene = preload("res://scenes/rocket.tscn") 
+	#var rocket_instance = rocket_scene.instantiate()
+	var rocket_instance = rscene.instantiate
 	add_child(rocket_instance)
 	#print(rocket_instance)
