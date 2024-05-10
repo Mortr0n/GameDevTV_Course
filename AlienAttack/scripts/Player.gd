@@ -5,6 +5,12 @@ var min_x = 0
 var min_y = 0
 var ship_x_buffer = 50
 
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Shoot"):
+		shoot()
+
 func _physics_process(delta: float) -> void:
 	var vertical_direction = 0
 	var horizontal_direction = 0
@@ -25,4 +31,11 @@ func _physics_process(delta: float) -> void:
 	# clamping global position to min(screen position which is top left) and max (the size of the viewable screen)
 	global_position = global_position.clamp(viewport_rect.position, viewport_rect.size)
 		
-	print(global_position)
+	#print(global_position)
+
+func shoot():
+	print("Shoot!")
+	var rocket_scene = preload("res://scenes/rocket.tscn") 
+	var rocket_instance = rocket_scene.instantiate()
+	add_child(rocket_instance)
+	#print(rocket_instance)
