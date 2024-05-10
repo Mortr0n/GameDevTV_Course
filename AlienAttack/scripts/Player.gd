@@ -7,6 +7,13 @@ var ship_x_buffer = 50
 
 var rscene = preload("res://scenes/rocket.tscn")
 
+#var rocket_container
+#@onready var rocket_container = get_node("RocketContainer") # short hand for doing the global variable and then getting the rocket_container inside of the _ready func
+@onready var rocket_container = $RocketContainer # Shorter short hand... lol
+
+func _ready() -> void:
+	#rocket_container = get_node("RocketContainer")
+	print(rocket_container.name)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Shoot"):
@@ -36,8 +43,10 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	print("Shoot!")
-	#var rocket_scene = preload("res://scenes/rocket.tscn") 
-	#var rocket_instance = rocket_scene.instantiate()
-	var rocket_instance = rscene.instantiate
-	add_child(rocket_instance)
-	#print(rocket_instance)
+
+	var rocket_instance = rscene.instantiate()
+	#add_child(rocket_instance)
+	rocket_container.add_child(rocket_instance)
+	rocket_instance.global_position = global_position # since this script is on the player instance the global_position is the position of the player.
+	rocket_instance.global_position.x += 68
+	
