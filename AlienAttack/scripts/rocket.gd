@@ -12,5 +12,12 @@ func _physics_process(delta: float) -> void:
 	global_position.x += rocket_speed * delta
 
 func _on_screen_exited():
-	#print("Rockets Red Glare")
 	queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	queue_free()
+	area.die()
+# you could just call queue free on the area that entered the rocket area, but then you won't be able to do additional stuff on that item.
+# It's better instead to make a separate function for that item so that you can do other things like maybe call an animation or something
+	#area.queue_free()
