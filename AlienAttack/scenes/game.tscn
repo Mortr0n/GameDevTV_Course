@@ -25,4 +25,5 @@ position = Vector2(64, 376)
 position = Vector2(-126, -114)
 scale = Vector2(1, 1.36)
 
+[connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]
 [connection signal="area_entered" from="DeathZone" to="." method="_on_death_zone_area_entered"]

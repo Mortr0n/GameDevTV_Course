@@ -4,6 +4,8 @@ extends Area2D
 
 @export var move_speed = 200
 
+signal enemy_died
+
 func _physics_process(delta: float) -> void:
 	global_position.x -= move_speed * delta
 
@@ -16,8 +18,10 @@ func _physics_process(delta: float) -> void:
 	#pass
 	
 func die() -> void:
-	print("dying!")
+	#print("Enemy dying!")
+	emit_signal("enemy_died")
 	queue_free()
+	
 
 
 func _on_body_entered(body: Node2D) -> void:

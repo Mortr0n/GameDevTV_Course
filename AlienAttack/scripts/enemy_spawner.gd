@@ -1,5 +1,7 @@
 extends Node2D
 
+signal enemy_spawned(enemy_scene)
+
 var enemy_scene = preload("res://scenes/basic_enemy.tscn")
 @onready var spawn_position_container: Node2D = $SpawnPositions
 

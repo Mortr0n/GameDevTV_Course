@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal took_damage 
 #var rocket_container
 #@onready var rocket_container = get_node("RocketContainer") # short hand for doing the global variable and then getting the rocket_container inside of the _ready func
 @onready var rocket_container = $RocketContainer # Shorter short hand... lol
@@ -54,9 +55,13 @@ func shoot():
 	
 
 func take_damage():
-	print("Player Damaged!")
-	if game.player_lives > 0: 
-		game.player_lives -= 1
-		print("lives = " + str(game.player_lives))
-	if game.player_lives == 0:
-		print("Player dead!")
+	#print("Player Damaged!")
+	#if game.player_lives > 0: 
+		#game.player_lives -= 1
+		#print("lives = " + str(game.player_lives))
+	#if game.player_lives == 0:
+		#print("Player dead!")
+	emit_signal("took_damage")
+
+func die():
+	queue_free()
