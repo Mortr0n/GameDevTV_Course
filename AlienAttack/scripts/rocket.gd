@@ -5,7 +5,8 @@ extends Area2D
 @onready var visible_notifier: VisibleOnScreenNotifier2D = $VisibleNotifier
 
 
-func _ready() -> void:
+func _ready() -> void: 
+	#connecting the visiblenotifier's screen exited signal to our rocket via code instead of clicking the signal and doing it that way.
 	visible_notifier.connect("screen_exited", _on_screen_exited)
 
 func _physics_process(delta: float) -> void:

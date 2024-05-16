@@ -1,15 +1,17 @@
 extends CharacterBody2D
 
+#var rocket_container
+#@onready var rocket_container = get_node("RocketContainer") # short hand for doing the global variable and then getting the rocket_container inside of the _ready func
+@onready var rocket_container = $RocketContainer # Shorter short hand... lol
+@onready var game: Node2D = $".."
+
 var max_speed = 300
 var min_x = 0
 var min_y = 0
 var ship_x_buffer = 50
-
 var rscene = preload("res://scenes/rocket.tscn")
 
-#var rocket_container
-#@onready var rocket_container = get_node("RocketContainer") # short hand for doing the global variable and then getting the rocket_container inside of the _ready func
-@onready var rocket_container = $RocketContainer # Shorter short hand... lol
+
 
 func _ready() -> void:
 	#rocket_container = get_node("RocketContainer")
@@ -50,3 +52,11 @@ func shoot():
 	rocket_instance.global_position = global_position # since this script is on the player instance the global_position is the position of the player.
 	rocket_instance.global_position.x += 68
 	
+
+func take_damage():
+	print("Player Damaged!")
+	if game.player_lives > 0: 
+		game.player_lives -= 1
+		print("lives = " + str(game.player_lives))
+	if game.player_lives == 0:
+		print("Player dead!")
