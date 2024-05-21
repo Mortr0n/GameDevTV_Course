@@ -1,11 +1,10 @@
 extends Node2D
 
-signal enemy_spawned(enemy_instance)
 
 var enemy_scene = preload("res://scenes/basic_enemy.tscn")
 @onready var spawn_position_container: Node2D = $SpawnPositions
 
-
+signal enemy_spawned(enemy_instance) # this enemy_spawned signal requires an enemy_instance as the argument
 
 func _on_timer_timeout() -> void:
 	spawn_enemy()
@@ -16,7 +15,7 @@ func spawn_enemy():
 	var random_spawner = spawn_positions.pick_random()
 	
 	enemy_instance.global_position = random_spawner.global_position
-	emit_signal("enemy_spawned", enemy_instance)
+	emit_signal("enemy_spawned", enemy_instance) # emitting signal enemy spawned taking in the enemy_instance we instantiated as the argument
 	#add_child(enemy_instance)
 	
 # I'm not sure that there's is better than my way, but there's more ways than one to do it.
