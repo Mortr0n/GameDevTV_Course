@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://crvlrwsrmxrgw"]
+[gd_scene load_steps=7 format=3 uid="uid://crvlrwsrmxrgw"]
 
 [ext_resource type="Texture2D" uid="uid://j26x88osjmc4" path="res://assets/textures/bg.png" id="1_wylah"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_y1yna"]
 [ext_resource type="PackedScene" uid="uid://bnyll46aab6ri" path="res://scenes/player.tscn" id="2_0c5kc"]
+[ext_resource type="PackedScene" uid="uid://boato52m8lrl" path="res://scenes/hud.tscn" id="2_m6p8h"]
 [ext_resource type="PackedScene" uid="uid://5fqqj35hgodp" path="res://scenes/death_zone.tscn" id="3_ijgrv"]
 [ext_resource type="PackedScene" uid="uid://bxpy38ydiciox" path="res://scenes/enemy_spawner.tscn" id="4_2b1nu"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_y1yna")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("2_m6p8h")]
 
 [node name="Background" type="TextureRect" parent="."]
 z_index = -100

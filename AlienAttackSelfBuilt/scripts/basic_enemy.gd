@@ -20,3 +20,4 @@ func die() -> void:
 # when player is entered which is characterbody2d
 func _on_body_entered(body: Node2D) -> void:
 	body.player_damaged()
+	queue_free()
