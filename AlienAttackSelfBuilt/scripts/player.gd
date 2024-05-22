@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal player_hit
 
 @onready var rocket_container = $RocketContainer
 @export var max_speed = 300
@@ -26,3 +27,10 @@ func shoot():
 	rocket_container.add_child(rocket_instance)
 	rocket_instance.global_position = global_position
 	rocket_instance.global_position.x += 60
+
+func player_damaged():
+	emit_signal("player_hit")
+
+func die():
+	print("Player Death")
+	queue_free()

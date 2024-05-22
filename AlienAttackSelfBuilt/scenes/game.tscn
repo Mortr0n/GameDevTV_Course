@@ -25,4 +25,6 @@ position = Vector2(89, 357)
 
 [node name="DeathZone" parent="." instance=ExtResource("3_ijgrv")]
 
+[connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
+[connection signal="enemy_spawned" from="EnemySpawner" to="." method="_on_enemy_spawner_enemy_spawned"]
 [connection signal="area_entered" from="DeathZone" to="." method="_on_death_zone_area_entered"]
