@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3wjsohqk7cdb"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen_control.gd" id="1_ibctn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_obypj"]
+font_size = 55
+
+[sub_resource type="LabelSettings" id="LabelSettings_srld1"]
+font_size = 30
+
+[sub_resource type="FontFile" id="FontFile_xqabk"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/25/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/30/0 = Vector2(0, 0)
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/30/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/30/0/kerning_overrides/30/0 = Vector2(0, 0)
+
+[node name="GameOverScreenControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 640.0
+offset_top = 360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ibctn")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -371.5
+offset_top = -201.5
+offset_right = 371.5
+offset_bottom = 201.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_top = 66.5
+offset_right = 152.0
+offset_bottom = -260.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_obypj")
+
+[node name="ScoreLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 257.5
+offset_top = 151.5
+offset_right = 497.5
+offset_bottom = 206.5
+text = "Final Score: 9999"
+label_settings = SubResource("LabelSettings_srld1")
+
+[node name="RetryButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 290.5
+offset_top = 211.5
+offset_right = 474.5
+offset_bottom = 280.5
+theme_override_colors/font_color = Color(0.784314, 0.717647, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.682353, 0, 1)
+theme_override_colors/font_hover_color = Color(0.788235, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0.709804, 0, 1)
+theme_override_colors/icon_normal_color = Color(0.94902, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0.694118, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0.721569, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontFile_xqabk")
+theme_override_font_sizes/font_size = 30
+text = "Retry"
+
+[connection signal="pressed" from="Panel/RetryButton" to="." method="_on_retry_button_pressed"]

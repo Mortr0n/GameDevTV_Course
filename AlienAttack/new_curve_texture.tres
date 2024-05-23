@@ -1,0 +1,8 @@
+[gd_resource type="CurveTexture" load_steps=2 format=3 uid="uid://dvuibia767exe"]
+
+[sub_resource type="Curve" id="Curve_xdytu"]
+_data = [Vector2(0.413043, 0.901099), 0.0, 0.0, 0, 0, Vector2(1, 0.263736), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+curve = SubResource("Curve_xdytu")

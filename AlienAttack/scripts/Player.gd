@@ -5,6 +5,7 @@ signal took_damage
 #@onready var rocket_container = get_node("RocketContainer") # short hand for doing the global variable and then getting the rocket_container inside of the _ready func
 @onready var rocket_container = $RocketContainer # Shorter short hand... lol
 @onready var game: Node2D = $".."
+@onready var laser_sound = $LaserSound
 
 var max_speed = 300
 var min_x = 0
@@ -46,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	print("Shoot!")
-
+	laser_sound.play()
 	var rocket_instance = rscene.instantiate()
 	#add_child(rocket_instance)
 	rocket_container.add_child(rocket_instance)

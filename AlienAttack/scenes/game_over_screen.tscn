@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcsko0c5smyes"]
+[gd_scene load_steps=5 format=3 uid="uid://dcsko0c5smyes"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_e7sdq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egou5"]
 bg_color = Color(1, 0.156863, 0, 0.545098)
@@ -23,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e7sdq")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -78,10 +81,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = 49.0
-offset_right = 4.0
-offset_bottom = 57.0
+offset_left = -91.0
+offset_top = 42.0
+offset_right = 94.0
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 44
 text = "Retry"
+
+[connection signal="pressed" from="Panel/RetryButton" to="." method="_on_retry_button_pressed"]

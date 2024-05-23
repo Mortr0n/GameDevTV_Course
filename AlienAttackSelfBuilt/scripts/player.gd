@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
-signal player_hit
+signal player_hit(area: Area2D)
 
+
+@onready var laser_sound: AudioStreamPlayer = $LaserSound
 @onready var rocket_container = $RocketContainer
+
 @export var max_speed = 300
 
 var rocket_scene = preload("res://scenes/rocket.tscn")
@@ -23,13 +26,14 @@ func get_input():
 	global_position = global_position.clamp(viewport_rect.position, viewport_rect.size)
 
 func shoot():
+	laser_sound.play()
 	var rocket_instance = rocket_scene.instantiate()
 	rocket_container.add_child(rocket_instance)
 	rocket_instance.global_position = global_position
 	rocket_instance.global_position.x += 60
 
-func player_damaged():
-	emit_signal("player_hit")
+func player_damaged(area: Area2D):
+	emit_signal("player_hit", area)
 
 func die():
 	print("Player Death")
