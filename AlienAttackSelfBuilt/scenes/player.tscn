@@ -1,8 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnyll46aab6ri"]
+[gd_scene load_steps=13 format=3 uid="uid://bnyll46aab6ri"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3spfn"]
 [ext_resource type="Texture2D" uid="uid://dwjx4ebq3n702" path="res://assets/textures/player_ship.png" id="1_l8eeh"]
+[ext_resource type="Texture2D" uid="uid://b214rvgym3luv" path="res://assets/textures/fire_01.png" id="2_tgcd5"]
 [ext_resource type="AudioStream" uid="uid://d272roo1bx2qf" path="res://assets/audio/sfx_laser2.wav" id="3_p0w20"]
+
+[sub_resource type="Gradient" id="Gradient_nvast"]
+offsets = PackedFloat32Array(0, 0.167883, 0.328467, 0.945255)
+colors = PackedColorArray(1, 0.4, 0, 1, 1, 1, 0.0117647, 1, 1, 1, 1, 0.945098, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a0cms"]
+gradient = SubResource("Gradient_nvast")
+
+[sub_resource type="Gradient" id="Gradient_fw20t"]
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.0547445, 0.116788, 0.485401, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.34902, 0, 1, 1, 0, 0.0980392, 1, 1, 0, 0.054902, 0.823529, 1, 1, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6s7nq"]
+gradient = SubResource("Gradient_fw20t")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_60rhw"]
+_data = [Vector2(0.642384, 0.901099), 0.0, 0.0, 0, 0, Vector2(0.963576, 0.230769), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5e4nd"]
+curve = SubResource("Curve_60rhw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tkn6v"]
+lifetime_randomness = 0.46
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 1)
+emission_shape = 1
+emission_sphere_radius = 1.8
+direction = Vector3(-800, 0, 0)
+spread = 21.0
+initial_velocity_min = 18.18
+initial_velocity_max = 637.26
+gravity = Vector3(0, 0, 0)
+scale_min = 0.02
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_5e4nd")
+color_ramp = SubResource("GradientTexture1D_6s7nq")
+color_initial_ramp = SubResource("GradientTexture1D_a0cms")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sw12o"]
 radius = 22.0
@@ -11,6 +52,16 @@ height = 86.0
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_3spfn")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-33, 0)
+scale = Vector2(0.528035, 0.221592)
+amount = 50
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_tkn6v")
+texture = ExtResource("2_tgcd5")
+lifetime = 0.35
+randomness = 0.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

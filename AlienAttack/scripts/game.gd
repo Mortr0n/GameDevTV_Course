@@ -22,6 +22,7 @@ func _on_death_zone_area_entered(area: Area2D) -> void:
 
 func _on_player_took_damage() -> void:
 	player_lives -= 1
+	
 	hud.set_lives_label(player_lives)
 	if player_lives == 0:
 		print("Player dead!")
@@ -53,3 +54,14 @@ func _on_enemy_spawner_enemy_spawned(enemy_instance: Variant) -> void:
 	enemy_instance.connect("enemy_died", _on_enemy_died)
 	add_child(enemy_instance)
 	
+
+# able to get the enemy instance from the path_enemy_instance and connect the signal while still adding the path_enemy_instance as a child of the spawner
+func _on_enemy_spawner_path_enemy_spawned(path_enemy_instance: Variant) -> void:
+	add_child(path_enemy_instance) # change order if your connecting straight from the path_enemy_instance.enemy that we got a reference to in the path_enemy scene because the enemy reference is an onready var which isn't ready until the child has been added.
+	path_enemy_instance.enemy.connect("enemy_died", _on_enemy_died)
+	
+	# This is how I did this on my own for part 2.  I got references to each child to get to the grandchild then pass it and then acc the path_enemy_instance child.
+	#var path_follow_instance = path_enemy_instance.get_child(0)
+	#var enemy_instance = path_follow_instance.get_child(0)
+	#enemy_instance.connect("enemy_died", _on_enemy_died)
+	#add_child(path_enemy_instance)
