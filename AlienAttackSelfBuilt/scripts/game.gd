@@ -52,3 +52,13 @@ func _on_enemy_died(enemy_instance):
 func _on_enemy_spawner_enemy_spawned(enemy_instance: Variant) -> void:
 	enemy_instance.connect("enemy_died",  Callable(self, "_on_enemy_died"), 0) 
 	add_child(enemy_instance)
+
+
+func _on_enemy_spawner_path_enemy_spawned(path_enemy_instance: Variant) -> void:
+	#var path_follow = path_enemy_instance.get_child(0)
+	#var enemy = path_follow.get_child(0)
+	add_child(path_enemy_instance)
+	#print(path_enemy_instance.global_position)
+	#var path_follow = path_enemy_instance.get_child(0)
+	path_enemy_instance.basic_enemy.connect("enemy_died", _on_enemy_died)
+	
